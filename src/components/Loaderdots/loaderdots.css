@@ -1,0 +1,10 @@
+.loaderdots {
+    width: 150px;
+    height: 150px;
+    background-image: url(../../images/loader.gif);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: start;
+    justify-content: center;
+}

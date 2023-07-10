@@ -1,0 +1,16 @@
+.page {
+  min-width: 320px;
+  max-width: 880px; /* выставляем максимальную ширину по проекту. в дальнейшем, ксли будут секции меньшего размера, можно будет регулировать их доп классом section__size_narrow с помощью калькулятора, пример calc (100% - (50px * 2)), где 50px - это боковые отсупы от размера max-width: 880px; */
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #000000;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: normal;
+  color: #ffffff;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}

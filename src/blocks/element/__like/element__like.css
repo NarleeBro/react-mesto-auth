@@ -1,0 +1,21 @@
+.element__like {
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/Group.svg);
+  border: none;
+  background-color: inherit;
+  transition: 0.5s ease-in-out;
+}
+
+.element__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* .element__like:active {
+  background-image: url(../../../images/UnionSVG.svg);
+  width: 22px;
+  height: 19px;
+} */

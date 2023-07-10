@@ -1,0 +1,22 @@
+.error {
+  margin: 0 36px;
+  padding: 0;
+  width: 358px;
+  min-height: 24px;
+  padding-top: 5px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21;
+  color: #ff0000;
+  position: absolute;
+  /* border-top: 1px solid red; */
+}
+
+@media screen and (max-width: 540px) {
+  .error {
+    width: 238px;
+    margin-right: 22px;
+    margin-left: 22px;
+  }
+}

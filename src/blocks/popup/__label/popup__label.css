@@ -1,0 +1,14 @@
+.popup__label {
+  padding-bottom: 30px;
+  display: block;
+}
+
+.popup__label:last-of-type {
+  padding-bottom: 0;
+}
+
+/* @media screen and (max-width: 320px) {
+  .popup__label {
+    padding-bottom: 30px;
+  }
+} */

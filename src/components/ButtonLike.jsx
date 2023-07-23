@@ -1,4 +1,4 @@
-export default function ButtonLike({ onCardLike, myid, card }) {
+export default function ButtonLike({ myid, card, onCardLike }) {
     const isLike = card.likes.some(element => myid === element._id)
 
     return (

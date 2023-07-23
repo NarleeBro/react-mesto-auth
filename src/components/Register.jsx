@@ -2,7 +2,7 @@ import RegistrationForm from "./RegistrationForm.jsx";
 import useFormValidation from "../utils/useFormValidation.js";
 import Input from "./Input.jsx";
 
-export default function Register({ handleRegister }) {
+export default function Register({ name, handleRegister }) {
   const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
 
   function onRegister(evt) {
@@ -11,7 +11,7 @@ export default function Register({ handleRegister }) {
   }
 
   return (
-    <RegistrationForm name='signup' onSubmit={onRegister} isValid={isValid}>
+    <RegistrationForm name={name} onSubmit={onRegister} isValid={isValid}>
       <Input
         name='email'
         type='email'
@@ -34,3 +34,5 @@ export default function Register({ handleRegister }) {
     </RegistrationForm>
   )
 }
+
+//123

@@ -70,8 +70,7 @@ class Api {
     }).then(this._checkRes);
   }
 
-
-  deleteLike(cardId) {
+  /* deleteLike(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: {
@@ -87,7 +86,7 @@ class Api {
         authorization: this._authorization
       }
     })
-  }
+  } */
 
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {

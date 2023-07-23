@@ -1,8 +1,7 @@
 import Popup from './Popup.jsx'
 import { memo } from 'react'
 
-/* export default function ImagePopup({ card, isOpen, onClose }) { */
-  const ImagePopup = memo(({ card, isOpen, onClose }) => {
+const ImagePopup = memo(({ card, isOpen, onClose }) => {
   return (
     <Popup
       name='image'

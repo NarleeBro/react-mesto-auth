@@ -57,9 +57,10 @@ const Main = memo(({ name,
             aria-label="Лайкни понравившуюся фотку"
           >
             <ul className="elements__list-template">
-              
+
               {isLoad ? <LoaderDots /> : cards.map(data => {
-                /* console.log(data.id) */
+                /* console.log(cards)
+                console.log(data) */
                 return (
                   <Card key={data._id} card={data} onDelete={onDelete} onCardClick={onCardClick} onCardLike={onCardLike} />
                 )
@@ -69,9 +70,9 @@ const Main = memo(({ name,
         </>
         :
         name === 'signup' ?
-          <Register handleRegister={handleRegister} />
+          <Register name={name} handleRegister={handleRegister} />
           :
-          <Login handleLogin={handleLogin} /> 
+          <Login name={name} handleLogin={handleLogin} />
       }
     </main>
   )
@@ -79,3 +80,4 @@ const Main = memo(({ name,
 
 export default Main;
 
+//123

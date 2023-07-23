@@ -55,7 +55,6 @@ function App() {
     setIsEditAvatarPopupOpen(false)
     setIsDeletePopupOpen(false)
     setIsImagePopup(false)
-   /*  setIsSuccessful(false) */
     setIsError(false)
     setIsResultPopupOpen(false)
   }, [])
@@ -175,7 +174,7 @@ function App() {
     handleSubmit(makeRequest, 'ERROR ТУТ ошибка handleAddCardREACT')
   }, [cards, handleSubmit])
 
-  const handleCardLike = useCallback((card) => {
+  /* const handleCardLike = useCallback((card) => {
     const isLike = card.likes.some(element => currentUser._id === element._id)
     if (isLike) {
       api.deleteLike(card._id)
@@ -190,7 +189,17 @@ function App() {
         })
         .catch((error) => console.error(`ERROR ТУТ ошибка handleCardLikeREACT-add ${error}`))
     }
-  }, [currentUser._id])
+  }, [currentUser._id]) */
+
+  //123
+  const handleCardLike = (card) => {
+    const isLiked = card.likes.some(element => element._id === currentUser._id);
+    api.changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((prevState) => prevState.map((c) => c._id === card._id ? newCard : c));
+      })
+      .catch((error) => console.error(`ERROR ТУТ ошибка handleCardLikeREACT-add ${error}`))
+  }
 
   function handleLogin(password, email) {
     setIsSend(true)

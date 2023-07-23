@@ -5,22 +5,22 @@ import { /* useCallback, */ useState } from "react";
 function Header({ name, dataUser }) {
   const [count, setCount] = useState(0)
 
-   /* const closeBurgerForResize = useCallback(() => {
-     if (document.documentElement.clientWidth > '767') {
-       setCount(0)
-       window.removeEventListener('resize', closeBurgerForResize)
-     }
-   }, []) */
- 
-   /* function handelClick() {
-     if (count === 0) {
-       setCount(1)
-       window.addEventListener('resize', closeBurgerForResize)
-     } else {
-       setCount(0)
-       window.removeEventListener('resize', closeBurgerForResize)
-     }
-   } */
+  /* const closeBurgerForResize = useCallback(() => {
+    if (document.documentElement.clientWidth > '767') {
+      setCount(0)
+      window.removeEventListener('resize', closeBurgerForResize)
+    }
+  }, []) */
+
+  /* function handelClick() {
+    if (count === 0) {
+      setCount(1)
+      window.addEventListener('resize', closeBurgerForResize)
+    } else {
+      setCount(0)
+      window.removeEventListener('resize', closeBurgerForResize)
+    }
+  } */
 
   function onSignOut() {
     setCount(0);

@@ -15,7 +15,7 @@ export default function Input({ name, type, placeholder, minLength, maxLength, i
                 required
                 className={
                     `${name === 'password' || name === 'email' ? 'login__input' : 'popup__input'}
-                    ${isInputValid === undefined || isInputValid ? '' : name === 'login' || name === 'email' ? 'login__input_invalid' : 'popup__input_invalid'}`
+                    ${isInputValid === undefined || isInputValid ? '' : name === 'login' || name === 'email' ? 'login__input_invalid' : 'popup__input_type_error'}`
                 }
                 value={value ? value : ''}
                 onChange={onChange}
@@ -26,3 +26,4 @@ export default function Input({ name, type, placeholder, minLength, maxLength, i
         </>
     )
 }
+//123

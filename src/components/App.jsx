@@ -55,7 +55,7 @@ function App() {
     setIsEditAvatarPopupOpen(false)
     setIsDeletePopupOpen(false)
     setIsImagePopup(false)
-    setIsError(false)
+    /* setIsError(false) */
     setIsResultPopupOpen(false)
   }, [])
 
@@ -193,6 +193,7 @@ function App() {
 
   //123
   const handleCardLike = (card) => {
+
     const isLiked = card.likes.some(element => element._id === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -223,6 +224,7 @@ function App() {
     setIsSend(true)
     auth(password, email)
       .then(res => {
+        setIsError(false)
         setIsResultPopupOpen(true)
         setIsSuccessful(true)
         window.scrollTo(0, 0)
@@ -230,7 +232,7 @@ function App() {
       })
       .catch((error) => {
         setIsResultPopupOpen(true)
-        setIsSuccessful(true)
+        setIsSuccessful(false)
         setIsError(true)
         console.error(`ERROR ТУТ ошибка handleRegisterREACT ${error}`)
       })
@@ -323,7 +325,7 @@ function App() {
         /> */}
 
         <InfoTooltip
-          name='result'
+          name='success'
           isSuccessful={isSuccessful}
           isOpen={isResultPopupOpen}
           onClose={closeAllPopups}

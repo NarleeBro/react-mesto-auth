@@ -1,6 +1,6 @@
 import Popup from "./Popup.jsx";
 
-export default function InfoTooltip({ name, /* titleText, */isSuccessful, isOpen, onClose }) {
+export default function InfoTooltip({ name, isSuccessful, isOpen, onClose }) {
 
   return (
     <Popup name={name} isOpen={isOpen} onClose={onClose}>
@@ -9,3 +9,4 @@ export default function InfoTooltip({ name, /* titleText, */isSuccessful, isOpen
     </Popup>
   )
 }
+

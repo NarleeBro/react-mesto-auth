@@ -1,0 +1,21 @@
+.popup__registration-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 36px;
+}
+
+@media screen and (max-width: 550px) {
+  .popup__registration-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+@media screen and (max-height: 420px) {
+  .popup__registration-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}

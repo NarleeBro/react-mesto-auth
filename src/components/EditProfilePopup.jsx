@@ -1,69 +1,65 @@
-import { useContext, useEffect } from "react";
-import useFormValidation from "../utils/useFormValidation";
-import PopupWithForm from "./PopupWithForm";
-import CurrentUserContext from "./contexts/CurrentUserContext";
+import { memo, useContext, useEffect } from "react";
+import useFormValidation from "../utils/useFormValidation.js";
+import PopupWithForm from "./PopupWithForm.jsx";
+import CurrentUserContext from "./contexts/CurrentUserContext.js";
+import Input from "./Input.jsx";
 
-export default function EditProfilePopup({ isOpen, onClose, onUpdateUser, isSend }) {
+const EditProfilePopup = memo(({ onUpdateUser, isOpen, onClose }) => {
     const currentUser = useContext(CurrentUserContext)
-    const { values, errors, isValid, isInputVAlid, handleChange, reset, setValue } = useFormValidation()
+    const { values, errors, isValid, isInputValid, handleChange, reset } = useFormValidation()
 
     useEffect(() => {
-        setValue("yourname", currentUser.name)
-        setValue("yourjob", currentUser.about)
-    }, [currentUser, setValue])
-
-    function resetForClose () {
-        onClose()
-        reset({ yourname: currentUser.name, yourjob: currentUser.about })
-    }
+        if (isOpen) {
+            reset({ yourname: currentUser.name, yourjob: currentUser.about })
+        }
+    }, [currentUser, isOpen/* , reset */])
 
     function handleSubmit(evt) {
         evt.preventDefault()
-        onUpdateUser({yourname: values.yourname, yourjob: values.yourjob}, reset)
+        onUpdateUser({ yourname: values.yourname, yourjob: values.yourjob }, reset)
     }
 
     return (
         <PopupWithForm
-            name="edit-profile"
-            title="Редактировать профиль"
+            name={"edit-profile"}
+            title={"Редактировать профиль"}
             isOpen={isOpen}
-            onClose={resetForClose}
+            onClose={onClose}
             isValid={isValid}
-            isSend={isSend}
             onSubmit={handleSubmit}
         >
             <label htmlFor="nameInput" className="popup__label">
-                <input
+                <Input
                     type="text"
-                    className={`popup__input popup__input_edit_name ${isInputVAlid.yourname === undefined || isInputVAlid.yourname ? '' : "popup__input_type_error"}`}
                     id="nameInput"
                     placeholder="Ваше имя"
                     name="yourname"
                     minLength={2}
                     maxLength={40}
                     required
-                    value={values.yourname ? values.yourname : ''}
-                    disabled={isSend}
+                    value={values.yourname}
+
                     onChange={handleChange}
+                    isInputValid={isInputValid.yourname}
+                    error={errors.yourname}
                 />
-                <span id="nameInput-error" className="nameInput-error error">{errors.yourname}</span>
             </label>
             <label htmlFor="jobInput" className="popup__label">
-                <input
+                <Input
                     type="text"
-                    className={`popup__input popup__input_edit_job ${isInputVAlid.yourjob === undefined || isInputVAlid.yourjob ? '' : "popup__input_type_error"}`}
-                    id="jobInput"
                     placeholder="Ваша должность"
                     name="yourjob"
                     minLength={2}
                     maxLength={100}
                     required
-                    value={values.yourjob ? values.yourjob : ''}
-                    disabled={isSend}
+                    value={values.yourjob}
                     onChange={handleChange}
+                    isInputValid={isInputValid.yourjob}
+                    error={errors.yourjob}
                 />
-                <span id="jobInput-error" className="jobInput-error error">{errors.yourjob}</span>
             </label>
         </PopupWithForm>
     )
-}
+})
+
+export default EditProfilePopup

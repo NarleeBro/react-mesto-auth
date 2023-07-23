@@ -1,13 +1,5 @@
-import { useEffect, useState } from "react";
-/* import api from "../utils/api" */
-
 export default function ButtonLike({ onCardLike, myid, card }) {
-    const [isLike, setIsLike] = useState(false)
-    /*  const [count, setCount] = useState(likes.length) */
-
-    useEffect(() => {
-        setIsLike(card.likes.some(element => myid === element._id))
-    }, [card, myid])
+    const isLike = card.likes.some(element => myid === element._id)
 
     return (
         <>

@@ -1,20 +1,20 @@
-import { useRef } from "react"
-import PopupWithForm from "./PopupWithForm"
-import useFormValidation from "../utils/useFormValidation"
+import PopupWithForm from "./PopupWithForm.jsx"
+import useFormValidation from "../utils/useFormValidation.js"
+import Input from "./Input.jsx"
+import { memo, useEffect } from "react"
 
-export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isSend }) {
+const EditAvatarPopup = memo(({ onUpdateAvatar, isOpen, onClose }) => {
+    const { values, errors, isValid, isInputValid, handleChange, reset } = useFormValidation()
 
-    const input = useRef()
-    const { values, errors, isValid, isInputVAlid, handleChange, reset } = useFormValidation()
-
-    function resetForClose() {
-        onClose()
-        reset()
-    }
+    useEffect(() => {
+        if (isOpen) {
+            reset()
+        }
+    }, [isOpen/* , reset */])
 
     function handleSubmit(evt) {
         evt.preventDefault()
-        onUpdateAvatar({avatar: input.current.value}, reset)
+        onUpdateAvatar({ avatar: values.avatar })
     }
 
     return (
@@ -22,26 +22,25 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isSen
             name="edit-avatar"
             title="Обновить Аватарку?"
             isOpen={isOpen}
-            isSend={isSend}
-            onClose={resetForClose}
+            onClose={onClose}
             isValid={isValid}
             onSubmit={handleSubmit}
         >
             <label htmlFor="imageUrlInput" className="popup__label">
-                <input
-                    ref={input}
+                <Input
                     type="url"
-                    className={`popup__input popup__input_edit_image-url ${isInputVAlid.avatar === undefined || isInputVAlid.avatar ? '' : "popup__input_type_error"}`}
                     id="avatar"
                     placeholder="Ссылка на картинку"
                     name="avatar"
                     required=""
-                    value={values.avatar ? values.avatar : ''}
-                    disabled={isSend}
+                    value={values.avatar}
                     onChange={handleChange}
+                    isInputValid={isInputValid.avatar}
+                    error={errors.avatar}
                 />
-                <span id="avatar-error" className="avatar-error error">{errors.avatar}</span>
             </label>
         </PopupWithForm>
     )
-}
+})
+
+export default EditAvatarPopup
